@@ -15,8 +15,9 @@ ENV SCANNER_VERSION 3.0.3.778
 RUN set -ex; \
 	wget -O /usr/local/bin/sonar-scanner "https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SCANNER_VERSION-linux.zip"; \
 	unzip /usr/local/bin/sonar-scanner; \
-	rm sonar-scanner-$SCANNER_VERSION-linux/conf/sonar-scanner.properties
+	mv /sonar-scanner-$SCANNER_VERSION-linux /sonar-scanner; \
+	rm /sonar-scanner/conf/sonar-scanner.properties;
 
 WORKDIR /workspace
 
-ENTRYPOINT ["/sonar-scanner-3.0.3.778-linux/bin/sonar-scanner"]
+# ENTRYPOINT ["/sonar-scanner/bin/sonar-scanner"]
